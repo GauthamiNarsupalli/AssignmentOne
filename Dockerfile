@@ -6,4 +6,4 @@ LABEL maintainer="gauthami"
 
 EXPOSE 8080
 
-CMD [“./bin/startup.sh”, “run”]
+CMD [“catalina.sh”, “run”]
