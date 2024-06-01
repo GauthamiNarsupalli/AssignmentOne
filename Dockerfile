@@ -1,9 +1,9 @@
 FROM tomcat:9
 
-WORKDIR /opt/tomcat/
+WORKDIR /opt/tomcat/bin/
 
 LABEL maintainer="gauthami"
 
 EXPOSE 8080
 
-CMD [“/opt/tomcat/bin/catalina.sh”, “run”]
+CMD [“catalina.sh”, “run”]
