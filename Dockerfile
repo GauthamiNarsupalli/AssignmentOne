@@ -1,6 +1,6 @@
 FROM tomcat:9
 
-WORKDIR /opt/tomcat/bin/
+WORKDIR /opt/tomcat/
 
 LABEL maintainer="gauthami"
 
