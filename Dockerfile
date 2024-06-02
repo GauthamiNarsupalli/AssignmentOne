@@ -1,14 +1,14 @@
 FROM tomcat:9.0
 
-WORKDIR /opt/tomcat/
+LABEL maintainer="gauthami"
 
 ENV CATALINA_BASE /opt/tomcat
 ENV CATALINA_HOME /opt/tomcat
 ENV CATALINA_TMPDIR /opt/tomcat/temp
 ENV PATH $CATALINA_HOME/bin:$PATH
 
-LABEL maintainer="gauthami"
+WORKDIR /opt/tomcat/
 
 EXPOSE 8080
 
-CMD [“/usr/local/tomcat/bin/catalina.sh”, “run”]
+CMD [“/opt/tomcat/catalina.sh”, “run”]
