@@ -18,9 +18,8 @@ RUN wget -O /tmp/tomcat.tar.gz https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/
 
 # Set environment variables
 ENV CATALINA_HOME /opt/tomcat
-ENV PATH $CATALINA_HOME/bin:$PATH
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
-ENV PATH $JAVA_HOME
+ENV PATH $JAVA_HOME/bin:$CATALINA_HOME/bin:$PATH
 
 WORKDIR /opt/tomcat/
 
