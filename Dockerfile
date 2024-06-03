@@ -22,8 +22,16 @@ ENV PATH $CATALINA_HOME/bin:$PATH
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 ENV PATH $JAVA_HOME
 
+WORKDIR /opt/tomcat/
+
 # Expose Tomcat port
 EXPOSE 8080
+
+# Clean up unnecessary files
+RUN apt-get purge -y openjdk-11-jdk wget && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /opt/tomcat/webapps/*
 
 # Start Tomcat
 CMD ["catalina.sh", "run"]
