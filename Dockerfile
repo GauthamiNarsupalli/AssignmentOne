@@ -15,10 +15,10 @@ RUN apt-get -y install openjdk-11-jdk wget
 # Install and configure Tomcat.
 RUN mkdir $CATALINA_HOME
 RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz
-RUN cd /tmp && tar xzvf tomcat.tar.gz
+RUN cd /tmp && tar xvfz apache*.tar.gz
 RUN cp -Rv /tmp/apache-tomcat-9.0.89/* $CATALINA_HOME
 RUN rm -rf /tmp/apache-tomcat-9.0.89
-RUN rm -rf /tmp/tomcat.tar.gz
+RUN rm -rf /tmp/apache*.tar.gz
 
 # Expose Tomcat port.
 EXPOSE 8080
