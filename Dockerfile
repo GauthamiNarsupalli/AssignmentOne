@@ -6,7 +6,7 @@ ENV TOMCAT_VERSION 9.0.89
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y openjdk-11-jdk wget && \
+    apt-get install -y openjdk-11-jdk && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
