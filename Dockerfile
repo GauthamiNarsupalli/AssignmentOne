@@ -1,14 +1,27 @@
-FROM tomcat:9.0
-
+# Docker file for Ubuntu with OpenJDK 18 and Tomcat 9.
+FROM ubuntu:20.04
 LABEL maintainer="gauthami"
 
-ENV CATALINA_BASE /opt/tomcat
+# Set environment variables
+ENV TOMCAT_VERSION 9.0.89
 ENV CATALINA_HOME /opt/tomcat
-ENV CATALINA_TMPDIR /opt/tomcat/temp
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 ENV PATH $CATALINA_HOME/bin:$PATH
 
-WORKDIR /opt/tomcat/
+# Install JDK & wget packages.
+RUN apt-get -y update && apt-get -y upgrade
+RUN apt-get -y install openjdk-11-jdk wget
 
+# Install and configure Tomcat.
+RUN mkdir $CATALINA_HOME
+RUN curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz
+RUN cd /tmp && tar xvfz tomcat.tar.gz
+RUN cp -Rv /tmp/apache-tomcat-9.0.89/* $CATALINA_HOME
+RUN rm -rf /tmp/apache-tomcat-9.0.89
+RUN rm -rf /tmp/tomcat.tar.gz
+
+# Expose Tomcat port.
 EXPOSE 8080
 
-CMD [“catalina.sh”, “run”]
+# Start Tomcat
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
