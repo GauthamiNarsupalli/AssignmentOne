@@ -21,8 +21,6 @@ ENV CATALINA_HOME /opt/tomcat
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 ENV PATH $JAVA_HOME/bin:$CATALINA_HOME/bin:$PATH
 
-WORKDIR /opt/tomcat/
-
 # Expose Tomcat port
 EXPOSE 8080
 
