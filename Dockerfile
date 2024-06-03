@@ -20,7 +20,7 @@ RUN cp -Rv /tmp/apache-tomcat-9.0.89/* $CATALINA_HOME
 RUN rm -rf /tmp/apache-tomcat-9.0.89
 RUN rm -rf /tmp/tomcat.tar.gz
 
-COPY ./opt/jenkins/workspace/Pipeline/target/ABCtechnologies-1.0.war /opt/tomcat/webapps
+COPY ./target/ABCtechnologies-1.0.war /opt/tomcat/webapps
 
 # Expose Tomcat port.
 EXPOSE 8080
