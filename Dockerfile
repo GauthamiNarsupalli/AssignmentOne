@@ -10,5 +10,3 @@ WORKDIR /opt/jenkins/workspace/Pipeline/target
 # Expose the default Tomcat port
 EXPOSE 8080
 
-# Start Tomcat when the container launches
-CMD ["catalina.sh", "run"]
