@@ -7,8 +7,10 @@ LABEL maintainer="gauthaminarsupalli111@gmail.com"
 # Remove existing webapps
 RUN rm -rf /usr/local/tomcat/webapps/*
 
+RUN cd /opt/jenkins/workspace/Pipeline/target/
+
 # Copy the WAR file from your local machine to the container
-COPY /opt/jenkins/workspace/Pipeline/target/ABCtechnologies-1.0.war /usr/local/tomcat/webapps/ROOT.war
+COPY ABCtechnologies-1.0.war /usr/local/tomcat/webapps/ROOT.war
 
 # Expose the default Tomcat port
 EXPOSE 8080
