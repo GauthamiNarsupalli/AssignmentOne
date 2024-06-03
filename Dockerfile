@@ -1,4 +1,4 @@
-# Docker file for Ubuntu with OpenJDK 18 and Tomcat 9.
+# Docker file for Ubuntu with OpenJDK 11 and Tomcat 9.
 FROM ubuntu:20.04
 LABEL maintainer="gauthami"
 
