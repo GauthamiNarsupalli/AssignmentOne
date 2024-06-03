@@ -1,4 +1,4 @@
-# Docker file for Ubuntu with OpenJDK 11 and Tomcat 9.
+# Docker file for Ubuntu with OpenJDK 18 and Tomcat 9.
 FROM ubuntu:20.04
 LABEL maintainer="gauthami"
 
@@ -14,7 +14,7 @@ RUN apt-get -y install openjdk-11-jdk wget
 
 # Install and configure Tomcat.
 RUN mkdir $CATALINA_HOME
-RUN curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz
 RUN cd /tmp && tar xvfz tomcat.tar.gz
 RUN cp -Rv /tmp/apache-tomcat-9.0.89/* $CATALINA_HOME
 RUN rm -rf /tmp/apache-tomcat-9.0.89
