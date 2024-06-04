@@ -10,7 +10,7 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 RUN cd /opt/jenkins/workspace/Pipeline/target/
 
 # Copy the WAR file from the local filesystem into the Tomcat webapps directory
-COPY ABCtechnologies.war /usr/local/tomcat/webapps/*
+COPY ABCtechnologies-1.0.war /usr/local/tomcat/webapps/*
 
 # Expose the default Tomcat port
 EXPOSE 8080
