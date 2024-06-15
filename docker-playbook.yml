@@ -1,0 +1,26 @@
+---
+- name: Build and run Docker container
+  hosts: docker_hosts
+  become: yes
+  tasks:
+
+    - name: Copy Dockerfile to the target host
+      copy:
+        src: ./Dockerfile
+        dest: /opt/jenkins/workspace/Pipeline/target/Dockerfile
+
+    - name: Build Docker image
+      community.docker.docker_image:
+        name: my-abcapp-image
+        build:
+         path: /opt/jenkins/workspace/Pipeline/target/
+        source: build
+        state: present
+
+    - name: Run Docker container
+      community.docker.docker_container:
+        name: my-abcapp-container
+        image: my-abcapp-image
+        state: started
+        ports:
+          - "8080:8080"
