@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: abcapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: abcapp
+  template:
+    metadata:
+      labels:
+        app: abcapp
+    spec:
+      containers:
+        - name: my-abcapp-container
+          image: us-central1-docker.pkg.dev/igpone/dockerrepo/my-abcapp-image:latest
+          ports:
+            - containerPort: 8080
