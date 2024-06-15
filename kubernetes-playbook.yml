@@ -1,0 +1,44 @@
+---
+- name: Deploy Kubernetes Resources
+  hosts: kubernetes
+  tasks:
+    - name: Create Deployment
+      k8s:
+        state: present
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: abcapp-deployment-ansiblepb
+          spec:
+            replicas: 2
+            selector:
+              matchLabels:
+                app: abcapp
+            template:
+              metadata:
+                labels:
+                  app: abcapp
+              spec:
+                containers:
+                  - name: my-abcapp-container
+                    image: us-central1-docker.pkg.dev/igpone/dockerrepo/my-abcapp-image:latest
+                    ports:
+                      - containerPort: 8080
+
+    - name: Create Service
+      k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: abcapp-service-ansiblepb
+          spec:
+            selector:
+              app: abcapp
+            ports:
+              - protocol: TCP
+              port: 8080
+                targetPort: 8080
+            type: ClusterIP
