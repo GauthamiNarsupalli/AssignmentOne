@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: abcapp-pod
+  labels:
+    app: abcapp
+spec:
+  containers:
+    - name: my-abcapp-container
+      image: us-central1-docker.pkg.dev/igpone/dockerrepo/my-abcapp-image:latest
+      ports:
+        - containerPort: 8080
